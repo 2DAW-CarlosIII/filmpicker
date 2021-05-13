@@ -1,0 +1,22 @@
+svg {
+    width: 70px;
+    height: auto;
+}
+
+svg path {
+    fill: #000 !important;
+}
+
+.mini-card {
+    width: 240px;
+    height: auto;
+    flex-shrink: 0;
+    margin-right: 10px
+}
+
+.mini-card-container {
+    display: flex;
+    flex-direction: row;
+    overflow-y: visible;
+    overflow-x: scroll;
+}
