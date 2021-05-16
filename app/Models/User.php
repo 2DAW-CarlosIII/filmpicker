@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
+
 
 class User extends Authenticatable
 {
@@ -19,7 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'password'
     ];
 
     /**
@@ -39,9 +41,12 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'favoritas' => 'object',
+        'por_ver' => 'object'
     ];
 
-    public function sala(){
+    public function sala()
+    {
         return $this->belongsTo(Sala::class);
     }
 }
