@@ -7,16 +7,65 @@ svg path {
     fill: #000 !important;
 }
 
-.mini-card {
-    width: 240px;
-    height: auto;
-    flex-shrink: 0;
-    margin-right: 10px
-}
+/* Estilos de la vista home */
 
 .mini-card-container {
     display: flex;
     flex-direction: row;
     overflow-y: visible;
     overflow-x: scroll;
+}
+
+.mini-card-container .card {
+    width: 240px;
+    height: auto;
+    flex-shrink: 0;
+    margin-right: 10px
+}
+
+/* Estilos del componenente filmCard */
+
+.filmCard.card {
+    overflow: hidden;
+}
+
+.filmCard .card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 800px;
+    transition: all 1s;
+}
+
+.filmCard.card:hover .card-img-overlay {
+    top: 0;
+}
+
+.filmCard .text-container {
+    height: 290px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.filmCard span {
+    color: black;
+    font-size: x-large;
+    line-height: 1.3;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Estilos de la vista Item */
+
+.itemPage {
+    margin-top: -1.5rem;
+}
+
+.itemPage .header {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    object-position: top;
 }

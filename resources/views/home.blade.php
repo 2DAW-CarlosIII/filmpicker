@@ -3,41 +3,49 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <a href="trending"><h3>Trending</h3></a>
+        <div class="col-md-12">
+            <div class="mb-4">
+                <a href="{{route('trending')}}">
+                    <h3>Trending</h3>
+                </a>
                 <div class="mini-card-container">
                     @foreach ($films->results as $film)
-                    <div class="card bg-dark text-white mini-card">
-                        <img class="card-img" src="https://image.tmdb.org/t/p/w500{{$film->poster_path}}"
-                            alt="Card image">
-                        <div class="card-img-overlay">
-                            <h5 class="card-title">{{$film->title ?? $film->name}}</h5>
-                            <p class="card-text">Last updated 3 mins ago</p>
-                        </div>
-                    </div>
+                    @include('component.filmCard')
                     @endforeach
                 </div>
-
-                @auth
-                <h3>Favoritas</h3>
-                <div class="mini-card-container">
-                    @foreach ($films->results as $film)
-                    <div class="card bg-dark text-white mini-card">
-                        <img class="card-img" src="https://image.tmdb.org/t/p/w500{{$film->poster_path}}"
-                            alt="Card image">
-                        <div class="card-img-overlay">
-                            <h5 class="card-title">{{$film->title ?? $film->name}}</h5>
-                            <p class="card-text">Last updated 3 mins ago</p>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                @endauth
-
             </div>
+
+            @auth
+            <div class="mb-4">
+                <a href="{{route('favoritas')}}">
+                    <h3>Favoritas</h3>
+                </a>
+                <div class="mini-card-container">
+                    @foreach (Auth::user()->favoritas as $fav)
+                    @php
+                    $film=App\Http\Controllers\ApiConsumerController::getItem($fav->media_type,$fav->id);
+                    $film->media_type = $fav->media_type
+                    @endphp
+                    @include('component.filmCard')
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <a class="d-block" href="{{route('por_ver')}}">
+                    <h3>Por ver</h3>
+                </a>
+                <div class="mini-card-container">
+                    @foreach (Auth::user()->por_ver as $fav)
+                    @php
+                    $film=App\Http\Controllers\ApiConsumerController::getItem($fav->media_type,$fav->id);
+                    $film->media_type = $fav->media_type
+                    @endphp
+                    @include('component.filmCard')
+                    @endforeach
+                </div>
+            </div>
+            @endauth
         </div>
     </div>
 </div>
