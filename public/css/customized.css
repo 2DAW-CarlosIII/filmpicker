@@ -7,6 +7,10 @@ svg path {
     fill: #000 !important;
 }
 
+a, a:hover {
+    color: inherit;
+}
+
 /* Estilos de la vista home */
 
 .mini-card-container {
@@ -27,6 +31,7 @@ svg path {
 
 .filmCard.card {
     overflow: hidden;
+    min-height: 320px;
 }
 
 .filmCard .card-img-overlay {

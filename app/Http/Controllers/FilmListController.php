@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use stdClass;
 
@@ -17,7 +18,7 @@ class FilmListcontroller extends Controller
     public function favoritas($page = 1)
     {
         $favoritas = Auth::user()->favoritas;
-        $films=new stdClass();
+        $films = new stdClass();
         $films->results = [];
         for ($i = ($page - 1) * 20; $i < 20 * $page; $i++) {
             if (isset($favoritas[$i])) {
@@ -28,15 +29,15 @@ class FilmListcontroller extends Controller
                 break;
             }
         }
-        $films->page=$page;
-        $films->total_pages= ceil(count($favoritas)/20);
+        $films->page = $page;
+        $films->total_pages = ceil(count($favoritas) / 20);
         return view('filmList', ['films' => $films]);
     }
 
     public function por_ver($page = 1)
     {
         $por_ver = Auth::user()->por_ver;
-        $films=new stdClass();
+        $films = new stdClass();
         $films->results = [];
         for ($i = ($page - 1) * 20; $i < 20 * $page; $i++) {
             if (isset($por_ver[$i])) {
@@ -47,14 +48,20 @@ class FilmListcontroller extends Controller
                 break;
             }
         }
-        $films->page=$page;
-        $films->total_pages= ceil(count($por_ver)/20);
+        $films->page = $page;
+        $films->total_pages = ceil(count($por_ver) / 20);
         return view('filmList', ['films' => $films]);
     }
 
     public function itemPage($mediaType, $id)
     {
         $item = ApiConsumerController::getItem($mediaType, $id);
-        return view('item', ['item' => $item]);
+        return view('item', ['film' => $item]);
+    }
+
+    public function search(Request $request, $page = 1)
+    {
+        $films = ApiConsumerController::search($request->input('query'), $page);
+        return view('filmList', ['films' => $films]);
     }
 }

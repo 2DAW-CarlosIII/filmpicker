@@ -7,6 +7,8 @@
     $ruta='favoritas';
     }elseif (str_contains($rutaActual,'por_ver')) {
     $ruta='por_ver';
+    }else{
+    $ruta='search';
     }
     @endphp
 
