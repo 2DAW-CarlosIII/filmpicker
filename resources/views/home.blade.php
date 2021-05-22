@@ -16,6 +16,7 @@
             </div>
 
             @auth
+            @if (isset(Auth::user()->favoritas) && count(Auth::user()->favoritas)>0)
             <div class="mb-4">
                 <a href="{{route('favoritas')}}">
                     <h3>Favoritas</h3>
@@ -30,7 +31,9 @@
                     @endforeach
                 </div>
             </div>
+            @endif
 
+            @if (isset(Auth::user()->por_ver) && count(Auth::user()->por_ver)>0)
             <div class="mb-4">
                 <a class="d-block" href="{{route('por_ver')}}">
                     <h3>Por ver</h3>
@@ -45,6 +48,7 @@
                     @endforeach
                 </div>
             </div>
+            @endif
             @endauth
         </div>
     </div>

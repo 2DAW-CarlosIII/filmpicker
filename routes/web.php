@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FilmListController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,21 +26,25 @@ Auth::routes();
 
 Route::redirect('/', '/home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/item/{mediaType}/{id}',[App\Http\Controllers\FilmListController::class, 'itemPage'])->name('item');
+Route::get('/item/{mediaType}/{id}',[FilmListController::class, 'itemPage'])->name('item');
 
 //Vistas de listas
-Route::get('/trending/{page?}', [App\Http\Controllers\FilmListController::class, 'trending'])->name('trending');
+Route::get('/trending/{page?}', [FilmListController::class, 'trending'])->name('trending');
 
-Route::get('/favoritas/{page?}', [App\Http\Controllers\FilmListController::class, 'favoritas'])->name('favoritas');
+Route::get('/favoritas/{page?}', [FilmListController::class, 'favoritas'])->name('favoritas');
 
-Route::get('/por_ver/{page?}', [App\Http\Controllers\FilmListController::class, 'por_ver'])->name('por_ver');
+Route::get('/por_ver/{page?}', [FilmListController::class, 'por_ver'])->name('por_ver');
 
-Route::get('/search/{page?}', [App\Http\Controllers\FilmListController::class, 'search'])->name('search');
+Route::get('/search/{page?}', [FilmListController::class, 'search'])->name('search');
 
 
 
 /*****************/
 // Interacciones //
 /*****************/
+
+Route::post('/toggleFav',[UserController::class, 'toggleFav'])->name('toggleFav');
+
+Route::post('/isFav',[UserController::class, 'isFavoritaRespuesta'])->name('isFav');
