@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiConsumer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use stdClass;
@@ -9,20 +10,20 @@ use stdClass;
 class FilmListcontroller extends Controller
 {
 
-    public function trending($page = null)
+    public function trending($page = 1,ApiConsumer $client)
     {
-        $films = ApiConsumerController::trending($page);
+        $films = $client->trending($page);
         return view('filmList', ['films' => $films]);
     }
 
-    public function favoritas($page = 1)
+    public function favoritas($page = 1, ApiConsumer $client)
     {
         $favoritas = Auth::user()->favoritas;
         $films = new stdClass();
         $films->results = [];
         for ($i = ($page - 1) * 20; $i < 20 * $page; $i++) {
             if (isset($favoritas[$i])) {
-                $film = ApiConsumerController::getItem($favoritas[$i]->media_type, $favoritas[$i]->id);
+                $film = $client->getItem($favoritas[$i]->media_type, $favoritas[$i]->id);
                 $film->media_type = $favoritas[$i]->media_type;
                 array_push($films->results, $film);
             } else {
@@ -34,14 +35,14 @@ class FilmListcontroller extends Controller
         return view('filmList', ['films' => $films]);
     }
 
-    public function por_ver($page = 1)
+    public function por_ver($page = 1,ApiConsumer $client)
     {
         $por_ver = Auth::user()->por_ver;
         $films = new stdClass();
         $films->results = [];
         for ($i = ($page - 1) * 20; $i < 20 * $page; $i++) {
             if (isset($por_ver[$i])) {
-                $film = ApiConsumerController::getItem($por_ver[$i]->media_type, $por_ver[$i]->id);
+                $film = $client->getItem($por_ver[$i]->media_type, $por_ver[$i]->id);
                 $film->media_type = $por_ver[$i]->media_type;
                 array_push($films->results, $film);
             } else {
@@ -53,15 +54,15 @@ class FilmListcontroller extends Controller
         return view('filmList', ['films' => $films]);
     }
 
-    public function itemPage($mediaType, $id)
+    public function itemPage($mediaType, $id, ApiConsumer $client)
     {
-        $item = ApiConsumerController::getItem($mediaType, $id);
-        return view('item', ['film' => $item]);
+        $item = $client->getItem($mediaType, $id);
+        return view('item', ['item' => $item]);
     }
 
-    public function search(Request $request, $page = 1)
+    public function search(Request $request, $page = 1, ApiConsumer $client)
     {
-        $films = ApiConsumerController::search($request->input('query'), $page);
-        return view('filmList', ['films' => $films]);
+        $films = $client->search($request->input('query'), $page);
+        return view('filmList', ['films' => $films, 'query' => $request->input('query')]);
     }
 }
