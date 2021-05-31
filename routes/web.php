@@ -28,7 +28,7 @@ Route::redirect('/', '/home');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/item/{mediaType}/{id}',[FilmListController::class, 'itemPage'])->name('item');
+Route::get('/item/{mediaType}/{id}', [FilmListController::class, 'itemPage'])->name('item');
 
 //Vistas de listas
 Route::get('/trending/{page?}', [FilmListController::class, 'trending'])->name('trending');
@@ -45,6 +45,6 @@ Route::get('/search/{page?}', [FilmListController::class, 'search'])->name('sear
 // Interacciones //
 /*****************/
 
-Route::post('/toggleFav',[UserController::class, 'toggleFav'])->name('toggleFav');
+Route::post('/toggleFav', [UserController::class, 'toggleFav'])->name('toggleFav');
 
-Route::post('/isFav',[UserController::class, 'isFavoritaRespuesta'])->name('isFav');
+Route::post('/isFav', [UserController::class, 'isFavoritaRespuesta'])->name('isFav');

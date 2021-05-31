@@ -48,7 +48,8 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <form action="{{route('search')}}" method="get" class="form-inline my-2 my-lg-0 mr-4">
-                            <input name="query" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <input name="query" class="form-control mr-sm-2" type="search" placeholder="Search"
+                                aria-label="Search">
                             <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
                         </form>
                         <!-- Authentication Links -->

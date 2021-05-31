@@ -10,7 +10,7 @@ use stdClass;
 class FilmListcontroller extends Controller
 {
 
-    public function trending($page = 1,ApiConsumer $client)
+    public function trending($page = 1, ApiConsumer $client)
     {
         $films = $client->trending($page);
         return view('filmList', ['films' => $films]);
@@ -35,7 +35,7 @@ class FilmListcontroller extends Controller
         return view('filmList', ['films' => $films]);
     }
 
-    public function por_ver($page = 1,ApiConsumer $client)
+    public function por_ver($page = 1, ApiConsumer $client)
     {
         $por_ver = Auth::user()->por_ver;
         $films = new stdClass();
