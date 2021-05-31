@@ -13,9 +13,9 @@
     @endphp
 
     @if($films->page > 1)
-    <a class="btn btn-primary mx-2" href="{{route($ruta,[$films->page-1])}}" role="button">&lt;</a>
+    <a class="btn btn-primary mx-2" href="{{route($ruta,[$films->page-1,'query' => $query])}}" role="button">&lt;</a>
     @endif
     @if ($films->total_pages>1)
-    <a class="btn btn-primary mx-2" href="{{route($ruta,[$films->page+1])}}" role="button">&gt;</a>
+    <a class="btn btn-primary mx-2" href="{{route($ruta,[$films->page+1,'query' => $query])}}" role="button">&gt;</a>
     @endif
 </div>
