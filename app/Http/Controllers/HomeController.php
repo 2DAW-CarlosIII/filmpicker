@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiConsumer;
+
 class HomeController extends Controller
 {
     /**
@@ -9,9 +11,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(ApiConsumer $client)
     {
-        $films = ApiConsumerController::trending() ;
+        $films = $client->trending() ;
         return view('home',['films'=>$films]);
     }
 }

@@ -16,6 +16,9 @@
             </div>
 
             @auth
+            @php
+                $cliente = new App\Services\ApiConsumer();
+            @endphp
             @if (isset(Auth::user()->favoritas) && count(Auth::user()->favoritas)>0)
             <div class="mb-4">
                 <a href="{{route('favoritas')}}">
@@ -24,7 +27,7 @@
                 <div class="mini-card-container">
                     @foreach (Auth::user()->favoritas as $fav)
                     @php
-                    $film=App\Http\Controllers\ApiConsumerController::getItem($fav->media_type,$fav->id);
+                    $film=$cliente->getItem($fav->media_type,$fav->id);
                     $film->media_type = $fav->media_type
                     @endphp
                     @include('component.filmCard')
@@ -41,7 +44,7 @@
                 <div class="mini-card-container">
                     @foreach (Auth::user()->por_ver as $fav)
                     @php
-                    $film=App\Http\Controllers\ApiConsumerController::getItem($fav->media_type,$fav->id);
+                    $film=$cliente->getItem($fav->media_type,$fav->id);
                     $film->media_type = $fav->media_type
                     @endphp
                     @include('component.filmCard')
