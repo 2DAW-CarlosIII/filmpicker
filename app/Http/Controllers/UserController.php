@@ -7,12 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use stdClass;
 
-use function PHPUnit\Framework\isNull;
-
 class UserController extends Controller
 {
     /**
-     * Comprueba si una pelicula/serie se encuentra en la lista de favoritos y la añade si no es así
+     * Retira o añade un item a la lista de favoritos. Devuelve el nuevo estado del item
      */
     public function toggleFav(Request $request)
     {
@@ -35,8 +33,8 @@ class UserController extends Controller
                 }
             }
         } else {
-            if (!isNull($user->favoritas)) {
-                foreach ($user->favoritas as $value) { //Este bucle es estúpido pero he sido incpaz de hacerlo funcionar de otra manera
+            if (!is_null($user->favoritas)) {
+                foreach ($user->favoritas as $value) { //Este bucle es estúpido pero he sido incapaz de hacerlo funcionar de otra manera
                     array_push($array, $value);
                 }
             }
