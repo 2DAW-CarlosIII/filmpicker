@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FilmListController;
+use App\Http\Controllers\SalaController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -39,6 +40,11 @@ Route::get('/por_ver/{page?}', [FilmListController::class, 'por_ver'])->name('po
 
 Route::get('/search/{page?}', [FilmListController::class, 'search'])->name('search');
 
+//Vistas de la sala
+Route::get('/preSala/{salaId?}', [SalaController::class, 'preSala'])->name('preSala');
+
+Route::get('/sala/{salaId}', [SalaController::class, 'vista'])->name('sala');
+
 
 
 /*****************/
@@ -48,3 +54,7 @@ Route::get('/search/{page?}', [FilmListController::class, 'search'])->name('sear
 Route::post('/toggleFav', [UserController::class, 'toggleFav'])->name('toggleFav');
 
 Route::post('/isFav', [UserController::class, 'isFavoritaRespuesta'])->name('isFav');
+
+Route::post('/creaSala', [SalaController::class, 'creaSala'])->name('creaSala');
+
+Route::post('/unirseASala', [SalaController::class, 'unirseASala'])->name('unirseASala');
