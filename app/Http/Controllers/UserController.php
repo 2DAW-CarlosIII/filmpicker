@@ -28,7 +28,7 @@ class UserController extends Controller
         $array = [];
         if ($isFav) {
             foreach ($user->favoritas as $value) {
-                if ($media_type != $value->media_type && $value->id != $id) {
+                if (!($media_type == $value->media_type && $value->id == $id)) {
                     array_push($array, $value);
                 }
             }
