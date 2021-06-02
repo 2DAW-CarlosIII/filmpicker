@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="mb-4">
-                <a href="{{route('trending')}}">
-                    <h3>Trending</h3>
-                </a>
+                <h3>
+                    <a href="{{route('trending')}}">Trending </a>
+                </h3>
                 <div class="mini-card-container">
                     @foreach ($films->results as $film)
                     @include('component.filmCard')
@@ -21,9 +21,9 @@
             @endphp
             @if (isset(Auth::user()->favoritas) && count(Auth::user()->favoritas)>0)
             <div class="mb-4">
-                <a href="{{route('favoritas')}}">
-                    <h3>Favoritas</h3>
-                </a>
+                <h3>
+                    <a href="{{route('favoritas')}}">Favoritas </a>
+                </h3>
                 <div class="mini-card-container">
                     @foreach (Auth::user()->favoritas as $fav)
                     @php
@@ -38,9 +38,9 @@
 
             @if (isset(Auth::user()->por_ver) && count(Auth::user()->por_ver)>0)
             <div class="mb-4">
-                <a class="d-block" href="{{route('por_ver')}}">
-                    <h3>Por ver</h3>
-                </a>
+                <h3>
+                    <a href="{{route('por_ver')}}">Por ver</a>
+                </h3>
                 <div class="mini-card-container">
                     @foreach (Auth::user()->por_ver as $fav)
                     @php
