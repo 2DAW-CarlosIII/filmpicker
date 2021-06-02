@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Sala;
+use App\Services\ApiConsumer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use stdClass;
 
 class SalaController extends Controller
 {
@@ -50,10 +52,20 @@ class SalaController extends Controller
     /**
      * Crea una sala nueva y la asocia al usuario autenticado
      */
-    public function creaSala()
+    public function creaSala(ApiConsumer $client)
     {
         $sala = new Sala();
         $sala->id = self::generarSalaId();
+
+        //Se cargan las 20 primeras peliculas trending
+        $pool = new stdClass;
+        $pool->list = [];
+        $pool->page = 1;
+        foreach ($client->trending()->results as $film) {
+            array_push($pool->list, $film);
+        }
+
+        $sala->pool = $pool;
         $sala->save();
 
         return redirect()->route('preSala', ['salaId' => $sala->id]);
@@ -63,9 +75,14 @@ class SalaController extends Controller
      */
     public function unirseASala(Request $request)
     {
-        if (is_null(Sala::find($request->input('salaId')))) {
+        $sala = Sala::find($request->input('salaId'));
+        if (is_null($sala)) {
             return redirect()->back()->withErrors(['msg' => 'La sala no existe']);
         }
+        if ($request->input('por_ver')) {
+        }
+
+
         self::cambiaSala($request->input('salaId'));
         return redirect()->route('sala', ['salaId' => $request->input('salaId')]);
     }
