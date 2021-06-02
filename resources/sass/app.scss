@@ -1,13 +1,16 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
-
+// Fontawesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
 
 svg {
     width: 70px;
@@ -17,11 +20,10 @@ svg {
     }
 }
 
-a, a:hover {
+a,
+a:hover {
     color: inherit;
 }
-
-
 
 /* Estilos de la vista home */
 
@@ -34,11 +36,9 @@ a, a:hover {
         width: 240px;
         height: auto;
         flex-shrink: 0;
-        margin-right: 10px
+        margin-right: 10px;
     }
 }
-
-
 
 /* Estilos del componenente filmCard */
 
@@ -63,8 +63,6 @@ a, a:hover {
         transition: all 1s;
     }
 }
-
-
 
 /* Estilos de la vista Item */
 
