@@ -50,7 +50,7 @@ class SalaController extends Controller
     //************************//
 
     /**
-     * Crea una sala nueva y la asocia al usuario autenticado
+     * Crea una sala nueva y te redirige a su preSala
      */
     public function creaSala(ApiConsumer $client)
     {
@@ -71,7 +71,7 @@ class SalaController extends Controller
         return redirect()->route('preSala', ['salaId' => $sala->id]);
     }
     /**
-     * Asocia al usuario autenticado la sala pasada por post
+     * Asocia al usuario autenticado la sala pasada por post e inserta opcionalmente sus peliculas por ver en la sala
      */
     public function unirseASala(Request $request)
     {
@@ -79,9 +79,23 @@ class SalaController extends Controller
         if (is_null($sala)) {
             return redirect()->back()->withErrors(['msg' => 'La sala no existe']);
         }
-        if ($request->input('por_ver')) {
+        if ($request->input('por_ver') && !is_null(Auth::user()->por_ver)) {
+            $auxObject = $sala->pool;
+            foreach (Auth::user()->por_ver as $film) {
+                $alreadyIn = false;
+                foreach ($auxObject->list as $filmAlreadyIn) {
+                    if ($filmAlreadyIn->media_type == $film->media_type && $filmAlreadyIn->id == $film->id) {
+                        $alreadyIn = true;
+                        break;
+                    }
+                }
+                if (!$alreadyIn) {
+                    array_push($auxObject->list, $film);
+                }
+            }
+            $sala->pool = $auxObject;
+            $sala->save();
         }
-
 
         self::cambiaSala($request->input('salaId'));
         return redirect()->route('sala', ['salaId' => $request->input('salaId')]);
