@@ -1867,6 +1867,10 @@ __webpack_require__.r(__webpack_exports__);
         media_type: this.media_type
       }).then(function (response) {
         _this.faved = response.data;
+
+        if (location.pathname == "/home") {
+          location.reload();
+        }
       })["catch"](function (error) {
         console.log(error);
       });

@@ -21,6 +21,9 @@ export default {
         })
         .then((response) => {
           this.faved = response.data;
+          if (location.pathname == "/home") {
+            location.reload();
+          }
         })
         .catch(function (error) {
           console.log(error);
