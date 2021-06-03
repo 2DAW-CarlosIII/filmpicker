@@ -39,6 +39,7 @@ class SalaController extends Controller
         $user = User::find(Auth::user()->id);
         $oldSalaId = $user->sala_id;
         $user->sala_id = $salaId;
+        $user->posicion_sala = null;
         $user->save();
 
         self::destruirSala($oldSalaId);
@@ -108,7 +109,8 @@ class SalaController extends Controller
     {
         $salaId = Auth::user()->sala_id;
         $usuario = User::find(Auth::user()->id);
-        $usuario->sala_id =null;
+        $usuario->sala_id = null;
+        $usuario->posicion_sala = null;
         $usuario->save();
         self::destruirSala($salaId);
         return redirect()->route('home');
@@ -118,9 +120,9 @@ class SalaController extends Controller
     //****************//
     //     Vistas     //
     //****************//
-    public function vista($salaId)
+    public function vista($salaId, ApiConsumer $client)
     {
-        return view('sala');
+        return view('sala', ['sala' => Sala::find($salaId), 'user' => User::find(Auth::user()->id), 'cliente' => $client]);
     }
 
     public function preSala($salaId = null)

@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
         $user->email = 'mail2@mail.org';
         $user->password = bcrypt('password');
         $user->favoritas = json_decode('[{"id":691179,"media_type":"movie"},{"id":637649,"media_type":"movie"},{"id":503736,"media_type":"movie"},{"id":337404,"media_type":"movie"}]');
-        $user->por_ver = json_decode('[{"id":559581,"media_type":"movie"},{"id":95557,"media_type":"tv"}]');
+        $user->por_ver = json_decode('[{"id":691179,"media_type":"movie"},{"id":637649,"media_type":"movie"},{"id":503736,"media_type":"movie"},{"id":337404,"media_type":"movie"}]');
         $user->save();
     }
 }
