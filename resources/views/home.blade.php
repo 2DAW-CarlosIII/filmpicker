@@ -16,9 +16,6 @@
             </div>
 
             @auth
-            @php
-            $cliente = new App\Services\ApiConsumer();
-            @endphp
             @if (isset(Auth::user()->favoritas) && count(Auth::user()->favoritas)>0)
             <div class="mb-4">
                 <a href="{{route('favoritas')}}">

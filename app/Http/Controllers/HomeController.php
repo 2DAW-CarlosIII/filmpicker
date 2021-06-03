@@ -14,6 +14,6 @@ class HomeController extends Controller
     public function index(ApiConsumer $client)
     {
         $films = $client->trending();
-        return view('home', ['films' => $films]);
+        return view('home', ['films' => $films, 'cliente' => $client]);
     }
 }
