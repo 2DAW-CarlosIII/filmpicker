@@ -58,3 +58,5 @@ Route::post('/isFav', [UserController::class, 'isFavoritaRespuesta'])->name('isF
 Route::post('/creaSala', [SalaController::class, 'creaSala'])->name('creaSala');
 
 Route::post('/unirseASala', [SalaController::class, 'unirseASala'])->name('unirseASala');
+
+Route::get('/salirSala', [SalaController::class, 'salirSala'])->name('salirSala');

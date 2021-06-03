@@ -101,6 +101,20 @@ class SalaController extends Controller
         return redirect()->route('sala', ['salaId' => $request->input('salaId')]);
     }
 
+    /**
+     * Saca al usuario autenticado de la sala y en caso de que no quede nadie, la destruye
+     */
+    public function salirSala()
+    {
+        $salaId = Auth::user()->sala_id;
+        $usuario = User::find(Auth::user()->id);
+        $usuario->sala_id =null;
+        $usuario->save();
+        self::destruirSala($salaId);
+        return redirect()->route('home');
+    }
+
+
     //****************//
     //     Vistas     //
     //****************//
