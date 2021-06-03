@@ -43,7 +43,9 @@ class ApiConsumer
     public function getItem($mediaType, $id)
     {
         $uri = $mediaType . '/' . $id;
-        return $this->getResponse($uri);
+        $item = $this->getResponse($uri);
+        $item->media_type = $mediaType;
+        return $item;
     }
 
     /**

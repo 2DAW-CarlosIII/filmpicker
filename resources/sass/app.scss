@@ -78,9 +78,13 @@ a:hover {
 
 /* Estilos de la sala */
 .sala {
-    button {
+    button.salida {
         position: absolute;
         top: -1px;
         right: 19px;
+    }
+    .card {
+        max-width: 500px;
+        margin: auto;
     }
 }
