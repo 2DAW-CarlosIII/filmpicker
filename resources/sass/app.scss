@@ -12,6 +12,12 @@
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 
+html,
+body,
+#app {
+    height: 100%;
+}
+
 svg {
     width: 70px;
     height: auto;
