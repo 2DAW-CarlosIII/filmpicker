@@ -45,6 +45,48 @@ class SalaController extends Controller
         self::destruirSala($oldSalaId);
     }
 
+    /**
+     * Comprueba si una película se encuentra ya en un array de la sala
+     */
+    private function is_in($list, $film)
+    {
+        if (!is_null($list)) {
+            for ($i = 0; $i < count($list); $i++) { //$list es array pero por lo que sea no se puede acceder directamente a los elementos que lo integran por lo que no se puede usar un foreach
+                if ($list[$i]->media_type == $film['media_type'] && $list[$i]->id == $film['id']) { //Al parecer los campos de un request se tienen que acceder como un array ¯\_(ツ)_/¯
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Inserta un elemento en una de las listas de la sala. No hace la función de guardado
+     */
+    private function insertar($list, $film)
+    {
+        if (is_null($list)) {
+            $list = [$film];
+        } else {
+            array_push($list, $film);
+        }
+        return $list;
+    }
+
+    /**
+     * Inserta las 20 películas trending de la página indicada
+     */
+    private function insertarTrending($pool)
+    {
+        $client = new ApiConsumer();
+        $auxObject = $pool;
+        $auxObject->page++;
+        foreach ($client->trending($auxObject->page)->results as $film) {
+            array_push($auxObject->list, $film);
+        }
+        return $auxObject;
+    }
+
 
     //************************//
     // Funciones de respuesta //
@@ -114,6 +156,36 @@ class SalaController extends Controller
         $usuario->save();
         self::destruirSala($salaId);
         return redirect()->route('home');
+    }
+
+    /**
+     * Pasa el puntero del usuario a la siguiente película en la que se encuentra el usuario
+     */
+    public function next(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $sala = Sala::find($user->sala_id);
+        $user->posicion_sala++;
+        if (count($sala->pool->list) - 5 < $user->posicion_sala) {
+            $sala->pool = $this->insertarTrending($sala->pool);
+        }
+        $user->save();
+
+        if ($request->input('accepted')) {
+            // if (is_null($sala->aceptadas)) {
+            //     $sala->aceptadas = [$request->input('film')];
+            // } else {
+
+            if ($this->is_in($sala->aceptadas, $request->input('film'))) {
+                if (!$this->is_in($sala->matchs, $request->input('film'))) {
+                    $sala->matchs = $this->insertar($sala->matchs, $request->input('film'));
+                }
+            } else {
+                $sala->aceptadas = $this->insertar($sala->aceptadas, $request->input('film'));
+            }
+            // }
+        }
+        $sala->save();
     }
 
 
