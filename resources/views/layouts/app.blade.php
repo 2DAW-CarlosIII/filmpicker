@@ -73,12 +73,24 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#" onclick="event.preventDefault();
+                                document.getElementById('creaSala-form').submit();">Crear Sala</a>
+
+                                <a class="dropdown-item" href="{{ route('preSala') }}">Unirse a Sala</a>
+
+                                @isset(Auth::user()->sala_id)
+                                <a class="dropdown-item" href="{{route('sala',['salaId' => Auth::user()->sala_id])}}">Sala {{Auth::user()->sala_id}}</a>
+                                @endisset
+
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                <form id="creaSala-form" action="{{ route('creaSala') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>

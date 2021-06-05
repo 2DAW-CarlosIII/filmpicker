@@ -7,6 +7,11 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+// Fontawesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+
 svg {
     width: 70px;
     height: auto;
@@ -18,6 +23,14 @@ svg {
 a,
 a:hover {
     color: inherit;
+}
+
+.pe-none {
+    pointer-events: none;
+}
+
+.pe-auto {
+    pointer-events: auto;
 }
 
 /* Estilos de la vista home */
@@ -50,7 +63,6 @@ a:hover {
 }
 
 /* Estilos del componenente filmCard */
-
 .filmCard {
     &.card {
         overflow: hidden;
@@ -80,5 +92,38 @@ a:hover {
         height: 600px;
         object-fit: cover;
         object-position: top;
+    }
+}
+
+/* Estilos de la sala */
+.sala {
+    button.salida {
+        position: absolute;
+        top: -1px;
+        right: 19px;
+    }
+    .card {
+        max-width: 400px;
+        margin: auto;
+    }
+    h3 {
+        margin-bottom: 0;
+    }
+    .filmMiniCard{
+        &.card {
+            overflow: hidden;
+        }
+        &.card:hover .card-img-overlay {
+            top: 0;
+        }
+        .text-container {
+            overflow: hidden;
+        }
+        .card-img-overlay {
+            background-color: rgba(0, 0, 0, 0.8);
+            top: 800px;
+            transition: all 1s;
+        }
+
     }
 }

@@ -20,6 +20,9 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('fav-button-component', require('./components/favButtonComponent.vue').default);
+Vue.component('later-button', require('./components/laterButton.vue').default);
+Vue.component('accept-button', require('./components/acceptButton.vue').default);
+Vue.component('reject-button', require('./components/rejectButton.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
