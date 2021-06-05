@@ -16247,3 +16247,9 @@ a:hover {
 .sala .overflow-auto::-webkit-scrollbar-thumb {
   background-color: #3490dc;
 }
+
+/* Estilos del footer */
+footer {
+  box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 1rem;
+}

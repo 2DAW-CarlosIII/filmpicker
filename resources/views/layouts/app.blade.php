@@ -79,7 +79,9 @@
                                 <a class="dropdown-item" href="{{ route('preSala') }}">Unirse a Sala</a>
 
                                 @isset(Auth::user()->sala_id)
-                                <a class="dropdown-item" href="{{route('sala',['salaId' => Auth::user()->sala_id])}}">Sala {{Auth::user()->sala_id}}</a>
+                                <a class="dropdown-item"
+                                    href="{{route('sala',['salaId' => Auth::user()->sala_id])}}">Sala
+                                    {{Auth::user()->sala_id}}</a>
                                 @endisset
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -104,6 +106,24 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer class="bg-white">
+            <div class="container">
+                <div class="row justify-content-between justify-content-md-around">
+                    <div class="col-4 col-lg-2">
+                        A project for: <br>
+                        <a href="https://cifpcarlos3.es/"><img class="w-100"
+                                src="{{ URL::asset('images/logoc3-p2.png') }}" alt="C3 logo"></a>
+                    </div>
+                    <div class="col-4 col-lg-2">
+                        Powered by: <br>
+                        <a href="https://www.themoviedb.org/"><img class="w-100"
+                                src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg"
+                                alt="TMDB logo"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 

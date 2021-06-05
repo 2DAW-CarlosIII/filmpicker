@@ -94,15 +94,15 @@ a:hover {
         object-position: top;
         opacity: 0.2;
     }
-    .card.bg-transparent{
+    .card.bg-transparent {
         height: 600px;
     }
     .card-img.bg {
         opacity: 0.2;
     }
-    .score{
+    .score {
         font-size: 40px;
-        &-text{
+        &-text {
             line-height: 0.8;
         }
     }
@@ -154,4 +154,10 @@ a:hover {
             background-color: $blue;
         }
     }
+}
+
+/* Estilos del footer */
+footer {
+    box-shadow: 0 -0.125rem 0.25rem rgb(0 0 0 / 8%);
+    padding: 0.5rem 1rem;
 }
