@@ -1,7 +1,10 @@
 <template>
-  <span class="text-center" :class="{ fav: faved }" @click="click()"
-    >&#9733;</span
-  >
+  <span
+    class="d-flex align-items-center justify-content-center"
+    :class="{ fav: faved }"
+    @click="click()"
+    ><i class="fas fa-star"></i
+  ></span>
 </template>
 <script>
 export default {
@@ -48,12 +51,12 @@ export default {
 
 <style scoped>
 span {
+  padding: 5px;
   color: black;
-  font-size: x-large;
-  line-height: 1.3;
+  font-size: 20px;
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 999px;
   background-color: #fff;
   cursor: pointer;

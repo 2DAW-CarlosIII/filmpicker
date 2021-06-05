@@ -92,6 +92,19 @@ a:hover {
         height: 600px;
         object-fit: cover;
         object-position: top;
+        opacity: 0.2;
+    }
+    .card.bg-transparent{
+        height: 600px;
+    }
+    .card-img.bg {
+        opacity: 0.2;
+    }
+    .score{
+        font-size: 40px;
+        &-text{
+            line-height: 0.8;
+        }
     }
 }
 

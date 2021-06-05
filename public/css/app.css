@@ -16192,6 +16192,19 @@ a:hover {
      object-fit: cover;
   -o-object-position: top;
      object-position: top;
+  opacity: 0.2;
+}
+.itemPage .card.bg-transparent {
+  height: 600px;
+}
+.itemPage .card-img.bg {
+  opacity: 0.2;
+}
+.itemPage .score {
+  font-size: 40px;
+}
+.itemPage .score-text {
+  line-height: 0.8;
 }
 
 /* Estilos de la sala */
