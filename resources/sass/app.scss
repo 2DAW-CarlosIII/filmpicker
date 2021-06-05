@@ -25,6 +25,14 @@ a:hover {
     color: inherit;
 }
 
+.pe-none {
+    pointer-events: none;
+}
+
+.pe-auto {
+    pointer-events: auto;
+}
+
 /* Estilos de la vista home */
 
 .mini-card-container {
@@ -41,17 +49,14 @@ a:hover {
 }
 
 /* Estilos del componenente filmCard */
-
-.filmCard.card {
-    overflow: hidden;
-    min-height: 320px;
-}
-
-.filmCard.card:hover .card-img-overlay {
-    top: 0;
-}
-
 .filmCard {
+    &.card {
+        overflow: hidden;
+        min-height: 320px;
+    }
+    &.card:hover .card-img-overlay {
+        top: 0;
+    }
     .text-container {
         height: 290px;
         overflow: hidden;
@@ -84,7 +89,27 @@ a:hover {
         right: 19px;
     }
     .card {
-        max-width: 500px;
+        max-width: 400px;
         margin: auto;
+    }
+    h3 {
+        margin-bottom: 0;
+    }
+    .filmMiniCard{
+        &.card {
+            overflow: hidden;
+        }
+        &.card:hover .card-img-overlay {
+            top: 0;
+        }
+        .text-container {
+            overflow: hidden;
+        }
+        .card-img-overlay {
+            background-color: rgba(0, 0, 0, 0.8);
+            top: 800px;
+            transition: all 1s;
+        }
+
     }
 }
