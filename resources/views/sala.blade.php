@@ -60,10 +60,7 @@
     <div class="row flex-row flex-nowrap overflow-auto">
             @foreach ($sala->matchs as $filmMiniCard)
             @include('component.filmMiniCard')
-
             @endforeach
-
-
     </div>
 </div>
 @endsection
