@@ -110,13 +110,13 @@
         <footer class="bg-white">
             <div class="container">
                 <div class="row justify-content-between justify-content-md-around">
-                    <div class="col-4 col-lg-2">
-                        A project for: <br>
+                    <div class="col-5 col-sm-4 col-lg-2">
+                        <span class="d-none d-sm-inline">A project for: <br></span>
                         <a href="https://cifpcarlos3.es/"><img class="w-100"
                                 src="{{ URL::asset('images/logoc3-p2.png') }}" alt="C3 logo"></a>
                     </div>
-                    <div class="col-4 col-lg-2">
-                        Powered by: <br>
+                    <div class="col-5 col-sm-4 col-lg-2">
+                        <span class="d-none d-sm-inline">Powered by: <br></span>
                         <a href="https://www.themoviedb.org/"><img class="w-100"
                                 src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg"
                                 alt="TMDB logo"></a>
