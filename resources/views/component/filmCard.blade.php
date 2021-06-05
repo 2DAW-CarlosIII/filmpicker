@@ -12,7 +12,7 @@
             <a class="align-self-center order-3" href="{{route('item',[$film->media_type,$film->id])}}">Ver más &gt;</a>
 
             @auth
-            <fav-button-component :media_type="'{{$film->media_type}}'" :id="{{$film->id}}" class="order-2" />
+            <later-button :media_type="'{{$film->media_type}}'" :id="{{$film->id}}" class="order-2" />
             @endauth
         </div>
     </div>

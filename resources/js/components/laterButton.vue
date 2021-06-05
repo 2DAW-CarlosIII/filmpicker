@@ -18,32 +18,34 @@ export default {
   methods: {
     click: function () {
       axios
-        .post("toggleFav", {
+        .post("http://filmpicker.test/togglePorVer", {
           id: this.id,
           media_type: this.media_type,
         })
         .then((response) => {
           this.active = response.data;
+          if (location.pathname == "/home") {
+            location.reload();
+          }
         })
         .catch(function (error) {
           console.log(error);
         });
     },
   },
-  //   ,
-  //   created() {
-  //     axios
-  //       .post("isFav", {
-  //         id: this.id,
-  //         media_type: this.media_type,
-  //       })
-  //       .then((response) => {
-  //         this.faved = response.data;
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   },
+  created() {
+    axios
+      .post("http://filmpicker.test/isPorVer", {
+        id: this.id,
+        media_type: this.media_type,
+      })
+      .then((response) => {
+        this.active = response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
 };
 </script>
 

@@ -15,7 +15,7 @@ export default {
   methods: {
     click: function () {
       axios
-        .post("toggleFav", {
+        .post("http://filmpicker.test/toggleFav", {
           id: this.id,
           media_type: this.media_type,
         })
@@ -32,7 +32,7 @@ export default {
   },
   created() {
     axios
-      .post("isFav", {
+      .post("http://filmpicker.test/isFav", {
         id: this.id,
         media_type: this.media_type,
       })

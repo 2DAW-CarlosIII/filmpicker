@@ -1900,7 +1900,7 @@ __webpack_require__.r(__webpack_exports__);
     click: function click() {
       var _this = this;
 
-      axios.post("toggleFav", {
+      axios.post("http://filmpicker.test/toggleFav", {
         id: this.id,
         media_type: this.media_type
       }).then(function (response) {
@@ -1917,7 +1917,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this2 = this;
 
-    axios.post("isFav", {
+    axios.post("http://filmpicker.test/isFav", {
       id: this.id,
       media_type: this.media_type
     }).then(function (response) {
@@ -1961,30 +1961,32 @@ __webpack_require__.r(__webpack_exports__);
     click: function click() {
       var _this = this;
 
-      axios.post("toggleFav", {
+      axios.post("http://filmpicker.test/togglePorVer", {
         id: this.id,
         media_type: this.media_type
       }).then(function (response) {
         _this.active = response.data;
+
+        if (location.pathname == "/home") {
+          location.reload();
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     }
-  } //   ,
-  //   created() {
-  //     axios
-  //       .post("isFav", {
-  //         id: this.id,
-  //         media_type: this.media_type,
-  //       })
-  //       .then((response) => {
-  //         this.faved = response.data;
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   },
+  },
+  created: function created() {
+    var _this2 = this;
 
+    axios.post("http://filmpicker.test/isPorVer", {
+      id: this.id,
+      media_type: this.media_type
+    }).then(function (response) {
+      _this2.active = response.data;
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  }
 });
 
 /***/ }),

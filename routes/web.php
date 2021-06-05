@@ -57,6 +57,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/isFav', [UserController::class, 'isFavoritaRespuesta'])->name('isFav');
 
+    Route::post('/togglePorVer', [UserController::class, 'togglePorVer'])->name('togglePorVer');
+
+    Route::post('/isPorVer', [UserController::class, 'isPorVerRespuesta'])->name('isPorVer');
+
     Route::post('/creaSala', [SalaController::class, 'creaSala'])->name('creaSala');
 
     Route::post('/unirseASala', [SalaController::class, 'unirseASala'])->name('unirseASala');
