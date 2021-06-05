@@ -16252,7 +16252,4 @@ a:hover {
 footer {
   box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.08);
   padding: 0.5rem 1rem;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
