@@ -52,6 +52,7 @@
 
         </div>
     </div>
+    @if (isset($sala->matchs) && count($sala->matchs)>0)
     <div class="row">
         <div class="col-12 mt-5">
             <h3>Matchs</h3>
@@ -62,5 +63,6 @@
             @include('component.filmMiniCard')
             @endforeach
     </div>
+    @endif
 </div>
 @endsection
