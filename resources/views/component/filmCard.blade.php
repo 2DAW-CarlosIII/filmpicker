@@ -1,7 +1,7 @@
 <div class="filmCard card bg-dark text-white">
     <img class="card-img" src="https://image.tmdb.org/t/p/w500{{$film->poster_path}}" alt="Card image">
-    <div class="card-img-overlay">
-        <div class="text-container">
+    <div class="card-img-overlay d-flex flex-column">
+        <div class="text-container flex-grow-1">
             <a href="{{route('item',[$film->media_type,$film->id])}}">
                 <h5 class="card-title">{{$film->title ?? $film->name}}</h5>
             </a>

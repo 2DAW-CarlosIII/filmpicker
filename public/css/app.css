@@ -16171,13 +16171,11 @@ a:hover {
 /* Estilos del componenente filmCard */
 .filmCard.card {
   overflow: hidden;
-  min-height: 320px;
 }
 .filmCard.card:hover .card-img-overlay {
   top: 0;
 }
 .filmCard .text-container {
-  height: 290px;
   overflow: hidden;
   margin-bottom: 5px;
 }

@@ -73,13 +73,11 @@ a:hover {
 .filmCard {
     &.card {
         overflow: hidden;
-        min-height: 320px;
         &:hover .card-img-overlay {
             top: 0;
         }
     }
     .text-container {
-        height: 290px;
         overflow: hidden;
         margin-bottom: 5px;
     }
