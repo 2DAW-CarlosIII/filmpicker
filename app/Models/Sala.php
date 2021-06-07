@@ -10,10 +10,17 @@ class Sala extends Model
     use HasFactory;
 
     public $incrementing = false;
-    public $timestamps=false;
+    public $timestamps = false;
     protected $keyType = 'string';
 
-    public function users(){
+    protected $casts = [
+        'pool' => 'object',
+        'matchs' => 'object',
+        'aceptadas' => 'object'
+    ];
+
+    public function users()
+    {
         return $this->hasMany(User::class);
     }
 }
