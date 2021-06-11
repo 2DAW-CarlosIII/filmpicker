@@ -7,9 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    public $timestamps = false;
+
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'favoritas'
+        'favoritas',
+        'porVer'
     ];
 
     /**
@@ -38,14 +42,23 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'favoritas' => 'object',
-        'por_ver' => 'object'
-    ];
+    // protected $casts = [
+    //     'favoritas' => 'object',
+    //     'por_ver' => 'object'
+    // ];
 
     public function sala()
     {
         return $this->belongsTo(Sala::class);
+    }
+
+    public function favoritas()
+    {
+        return $this->belongsToMany(Pelicula::class, 'favoritas');
+    }
+
+    public function porVer()
+    {
+        return $this->belongsToMany(Pelicula::class, 'porVer');
     }
 }

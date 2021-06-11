@@ -17,13 +17,11 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
             $table->json('favoritas')->nullable();
             $table->json('por_ver')->nullable();
-            $table->char('sala_id',6)->nullable();
+            $table->char('sala_id', 6)->nullable();
             $table->integer('posicion_sala')->nullable(); //Identifica la posición en el array pool->lista de la sala en la que se encuentra
         });
     }

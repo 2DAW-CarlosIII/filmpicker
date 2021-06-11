@@ -13,14 +13,23 @@ class Sala extends Model
     public $timestamps = false;
     protected $keyType = 'string';
 
-    protected $casts = [
-        'pool' => 'object',
-        'matchs' => 'object',
-        'aceptadas' => 'object'
-    ];
-
     public function users()
     {
         return $this->hasMany(User::class);
+    }
+
+    public function pool()
+    {
+        return $this->belongsToMany(Pelicula::class, 'pool');
+    }
+
+    public function aceptadas()
+    {
+        return $this->belongsToMany(Pelicula::class, 'aceptadas');
+    }
+
+    public function matchs()
+    {
+        return $this->belongsToMany(Pelicula::class, 'matchs');
     }
 }
