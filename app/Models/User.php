@@ -42,10 +42,6 @@ class User extends Authenticatable
      *
      * @var array
      */
-    // protected $casts = [
-    //     'favoritas' => 'object',
-    //     'por_ver' => 'object'
-    // ];
 
     public function sala()
     {
