@@ -20,9 +20,9 @@ class CreatePoolTable extends Migration
             $table->primary(['sala_id', 'pelicula_id', 'media_type']);
         });
         Schema::table('pool', function (Blueprint $table) {
-            $table->foreign('sala_id')->references('id')->on('salas');
-            $table->foreign('pelicula_id')->references('id')->on('peliculas');
-            $table->foreign('media_type')->references('media_type')->on('peliculas');
+            $table->foreign('sala_id')->references('id')->on('salas')->onDelete('cascade');
+            $table->foreign('pelicula_id')->references('id')->on('peliculas')->onDelete('cascade');
+            $table->foreign('media_type')->references('media_type')->on('peliculas')->onDelete('cascade');
         });
     }
     /**

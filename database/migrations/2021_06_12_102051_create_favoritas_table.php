@@ -20,9 +20,9 @@ class CreateFavoritasTable extends Migration
             $table->primary(['user_id', 'pelicula_id', 'media_type']);
         });
         Schema::table('favoritas', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('pelicula_id')->references('id')->on('peliculas');
-            $table->foreign('media_type')->references('media_type')->on('peliculas');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('pelicula_id')->references('id')->on('peliculas')->onDelete('cascade');
+            $table->foreign('media_type')->references('media_type')->on('peliculas')->onDelete('cascade');
         });
     }
     /**
