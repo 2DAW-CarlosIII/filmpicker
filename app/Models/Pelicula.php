@@ -12,6 +12,8 @@ class Pelicula extends Model
 
     public $timestamps = false;
 
+
+    //Relaciones
     //usuarios de los que la película es favorita
     public function users_favorita()
     {
@@ -36,5 +38,22 @@ class Pelicula extends Model
     public function salas_()
     {
         return $this->belongsToMany(Sala::class, 'matchs');
+    }
+
+    //Otras funciones
+    public static function inserta($film)
+    {
+        $pelicula = new Pelicula();
+        $pelicula->id = $film->id;
+        $pelicula->media_type = $film->media_type;
+        if (!is_null($film->poster_path)) {
+            $pelicula->title = $film->title ?? $film->name;
+            $pelicula->poster_path = $film->poster_path;
+            $pelicula->backdrop_path = $film->backdrop_path;
+            $pelicula->overview = $film->overview;
+            $pelicula->mark = $film->vote_average;
+            $pelicula->homepage = $film->homepage;
+        }
+        $pelicula->save();
     }
 }
