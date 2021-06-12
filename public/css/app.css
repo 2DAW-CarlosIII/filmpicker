@@ -16171,6 +16171,7 @@ a:hover {
 /* Estilos del componenente filmCard */
 .filmCard.card {
   overflow: hidden;
+  min-height: 300px;
 }
 .filmCard.card:hover .card-img-overlay {
   top: 0;
