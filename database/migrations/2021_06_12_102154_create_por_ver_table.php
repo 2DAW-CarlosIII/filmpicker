@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Aceptadas extends Migration
+class CreatePorVerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class Aceptadas extends Migration
      */
     public function up()
     {
-        Schema::create('aceptadas', function (Blueprint $table) {
-            $table->char('sala_id', 6);
+        Schema::create('porVer', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');
             $table->integer('pelicula_id');
             $table->string('media_type', 5);
-            $table->primary(['sala_id', 'pelicula_id', 'media_type']);
+            $table->primary(['user_id', 'pelicula_id', 'media_type']);
         });
-        Schema::table('aceptadas', function (Blueprint $table) {
-            $table->foreign('sala_id')->references('id')->on('salas');
+        Schema::table('porVer', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('pelicula_id')->references('id')->on('peliculas');
             $table->foreign('media_type')->references('media_type')->on('peliculas');
         });
@@ -32,11 +32,11 @@ class Aceptadas extends Migration
      */
     public function down()
     {
-        Schema::table('aceptadas', function (Blueprint $table) {
-            $table->dropForeign('sala_id');
+        Schema::table('porVer', function (Blueprint $table) {
+            $table->dropForeign('user_id');
             $table->dropForeign('pelicula_id');
             $table->dropForeign('media_type');
         });
-        Schema::dropIfExists('aceptadas');
+        Schema::dropIfExists('porVer');
     }
 }
